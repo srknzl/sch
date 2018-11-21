@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.10)
-project(scheduler C)
+cmake_minimum_required(VERSION 3.10.2)
+project(scheduler)
 
-set(CMAKE_C_STANDARD 11)
+set(CMAKE_CXX_STANDARD 11)
 
-add_executable(scheduler main.c)
+add_executable(scheduler main.cpp)

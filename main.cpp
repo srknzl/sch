@@ -34,7 +34,9 @@ struct program{
     int numberOfInstructions;
     vector<int> instructionExecutionTimes;
 };
-
+void printQueue(priority_queue<process>){ // TODO Output process
+    cout << "hi";
+}
 
 
 int main() {
@@ -91,15 +93,13 @@ int main() {
         }
     }
     // SCHEDULING
+
+    /* In below statement sort timeline according to arrival time because we don't know
+    * definition file is sorted according to arrival times of processes.*/
     sort(timeLine.begin(),timeLine.end(),[](const process & a, const process & b){
         return a.arrivalTime > b.arrivalTime;
     });
-    /* In above statement sort timeline according to arrival time because we don't know
-     * definition file is sorted according to arrival times of processes.*/
 
-    int lastComingProcessArrival = timeLine.back().arrivalTime;
-
-    // terminating condition: when ready queue is empty and every process has arrived.
 
     // for convinience seperate vector just including arrival times of processes
     // these are the critical times that scheduler get a interrupt.
@@ -108,36 +108,61 @@ int main() {
     }
 
 
+    // terminating condition: when ready queue is empty and every process has arrived.
+    int lastComingProcessArrival = timeLine.back().arrivalTime;
+
     while(currentTime < lastComingProcessArrival || !readyQueue.empty()){
-        if(readyQueue.empty()){
+        if(readyQueue.empty()){ // no process has come yet
             int nextTime = timeLine.back().arrivalTime;
-            while(timeLine.back().arrivalTime == nextTime){ // after reaching a first arriving process or processes'
-                // arrival times remove every process arrived at that time. Add them to ready queue.
+            while(timeLine.back().arrivalTime == nextTime){ // after reaching a first arriving process,
+                // remove every process arrived at that time. Add them to ready queue.
                 process nextProcess = timeLine.back();
                 timeLine.pop_back();
                 readyQueue.push(nextProcess);
             }
-            currentTime = nextTime; // move that time immediately as this is the first arriving process
-            arrivalTimes.pop_back(); // remove first critical time that we need to be careful
+            currentTime = nextTime; // advance time until first arriving process
+            arrivalTimes.pop_back(); // remove first arrival
         }else{
             process enteringCPU = readyQueue.top();
-            int indexOfCode = stoi(""+enteringCPU.codeFile.back());
+            string s(1, enteringCPU.codeFile.at(enteringCPU.codeFile.length()-1)); // getting last char converting to string
+            int indexOfCode = stoi(s);
             int wereLeftAt = enteringCPU.wereLeftAt;
-            int numOfInstructions = programs.at(indexOfCode).numberOfInstructions;
-            vector<int> executionTimes = programs.at(indexOfCode).instructionExecutionTimes;
+            int numOfInstructions = programs.at(indexOfCode-1).numberOfInstructions;
+            vector<int> executionTimes = programs.at(indexOfCode-1).instructionExecutionTimes;
 
             bool thereIsAProcessLeaving = false; // will be true if a process leaves ready queue
 
-            // Execute instructions until a process leaves ready queue
+            // Execute instructions until a process leaves ready queue or a new process comes in
             while(!thereIsAProcessLeaving){
                 int executionTime = executionTimes.at(wereLeftAt-1);
                 // execute this statement
                 currentTime += executionTime;
                 wereLeftAt++;
+                //waiting time
+                auto copyQueue(readyQueue);
+                while(!copyQueue.empty()){
+                    auto next = copyQueue.top();
+                    if(next.name != enteringCPU.name) waitingTimes[next.name] += executionTime;
+                    copyQueue.pop();
+                }
 
+                if(wereLeftAt == numOfInstructions){ // a process finishes
+                    thereIsAProcessLeaving = true;
+                    turnaroundTimes[enteringCPU.name] = currentTime - enteringCPU.arrivalTime;  // calculate turnaround time
+                    readyQueue.pop();
+                    printQueue(readyQueue);
+                }
+                if(currentTime + executionTime >= arrivalTimes.back()){
+                    arrivalTimes.pop_back();
+                    process newProcess = timeLine.back();
+                    timeLine.pop_back();
+
+                    readyQueue.push(newProcess);
+                    printQueue(readyQueue);
+
+                    break;
+                }
             }
-
-
         }
 
     }
