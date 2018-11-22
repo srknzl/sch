@@ -5,6 +5,7 @@
 #include <map>
 
 using namespace std;
+ofstream outputFile("output.txt");
 
 struct process{
     int priority;
@@ -40,7 +41,7 @@ void printQueue(priority_queue<process> queue){
 
     if(queue.empty()){
         statusOfReadyQueue = "HEAD--TAIL";
-        cout << statusOfReadyQueue << endl;
+        outputFile << statusOfReadyQueue << endl;
         return;
     }
     while(!queue.empty()){
@@ -50,14 +51,13 @@ void printQueue(priority_queue<process> queue){
     }
 
     statusOfReadyQueue.append("TAIL");
-    cout << statusOfReadyQueue << endl;
+    outputFile << statusOfReadyQueue << endl;
 }
 
 
 int main() {
 
     int currentTime = 0;
-
     vector<int> arrivalTimes;
     priority_queue<process> readyQueue;
     vector<process> timeLine;
@@ -78,7 +78,6 @@ int main() {
             def >> newProcess.codeFile;
             def >> newProcess.arrivalTime;
 
-            //cout << newProcess.toString() << endl;
             timeLine.push_back(newProcess);
         }
     }else{
@@ -127,7 +126,7 @@ int main() {
 
     while(currentTime < lastComingProcessArrival || !readyQueue.empty()){
         if(readyQueue.empty()){ // no process has come yet
-            cout << to_string(currentTime) + ":";
+            outputFile << to_string(currentTime) + ":";
             printQueue(readyQueue);
             int nextTime = timeLine.back().arrivalTime;
             while(timeLine.back().arrivalTime == nextTime){ // after reaching a first arriving process,
@@ -138,7 +137,7 @@ int main() {
                 readyQueue.push(nextProcess);
             }
             currentTime = nextTime; // advance time until first arriving process
-            cout << to_string(currentTime) + ":";
+            outputFile << to_string(currentTime) + ":";
             printQueue(readyQueue);
         }else{
             bool thereIsAProcessLeaving = false; // will be true if a process leaves ready queue
@@ -171,17 +170,20 @@ int main() {
                     thereIsAProcessLeaving = true;
                     turnaroundTimes[enteringCPU.name] = currentTime - enteringCPU.arrivalTime;  // calculate turnaround time
                     readyQueue.pop();
-                    cout << to_string(currentTime) + ":";
+                    outputFile << to_string(currentTime) + ":";
                     printQueue(readyQueue); // when a process terminates print the ready queue
                 }
                 // If a new process comes in, add it to ready queue. And stop execution of current one.
-                if(currentTime >= arrivalTimes.back()){
+                if(!arrivalTimes.empty() && currentTime >= arrivalTimes.back()){
+                    process arrivalProcess = timeLine.back();
+                    waitingTimes[arrivalProcess.name] += currentTime - arrivalTimes.back(); // If a process has come and waited an instruction to finish
+
                     arrivalTimes.pop_back(); // remove from arrival times
                     process newProcess = timeLine.back();
                     timeLine.pop_back(); // remove form timeline
 
                     readyQueue.push(newProcess);
-                    cout << to_string(currentTime) + ":";
+                    outputFile << to_string(currentTime) + ":";
                     printQueue(readyQueue);
                     break;
                 }
@@ -189,14 +191,17 @@ int main() {
         }
     }
 
-    cout << endl;
+    outputFile << endl;
+    string last = (--turnaroundTimes.end())->first; // last element in the map should cause not to print endl
     for(auto &x : turnaroundTimes){
-        cout << "Turnaround time for " + x.first + " = " + to_string(x.second) + " ms" << endl;
-        cout << "Waiting time for " + x.first + " = " + to_string(waitingTimes[x.first]) << endl;
+        outputFile << "Turnaround time for " + x.first + " = " + to_string(x.second) + " ms" << endl;
+        if(x.first != last){
+            outputFile << "Waiting time for " + x.first + " = " + to_string(waitingTimes[x.first]) << endl;
+        }else{
+            outputFile << "Waiting time for " + x.first + " = " + to_string(waitingTimes[x.first]);
+        }
     }
-    /*for(auto & process : timeLine){
-        cout << process.toString() << endl;
-    }*/
+    outputFile.close();
     return 0;
 
 }
