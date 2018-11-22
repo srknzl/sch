@@ -34,8 +34,23 @@ struct program{
     int numberOfInstructions;
     vector<int> instructionExecutionTimes;
 };
-void printQueue(priority_queue<process>){ // TODO Output process
-    cout << "hi";
+void printQueue(priority_queue<process> queue){
+    string statusOfReadyQueue;
+    statusOfReadyQueue.append("HEAD-");
+
+    if(queue.empty()){
+        statusOfReadyQueue = "HEAD--TAIL";
+        cout << statusOfReadyQueue << endl;
+        return;
+    }
+    while(!queue.empty()){
+        process topProcess = queue.top();
+        statusOfReadyQueue.append(topProcess.name + "[" + to_string(topProcess.wereLeftAt) + "]-");
+        queue.pop();
+    }
+
+    statusOfReadyQueue.append("TAIL");
+    cout << statusOfReadyQueue << endl;
 }
 
 
@@ -127,14 +142,14 @@ int main() {
             string s(1, enteringCPU.codeFile.at(enteringCPU.codeFile.length()-1)); // getting last char converting to string
             int indexOfCode = stoi(s);
             int wereLeftAt = enteringCPU.wereLeftAt;
-            int numOfInstructions = programs.at(indexOfCode-1).numberOfInstructions;
-            vector<int> executionTimes = programs.at(indexOfCode-1).instructionExecutionTimes;
+            int numOfInstructions = programs.at((unsigned long)indexOfCode-1).numberOfInstructions;
+            vector<int> executionTimes = programs.at((unsigned long)indexOfCode-1).instructionExecutionTimes;
 
             bool thereIsAProcessLeaving = false; // will be true if a process leaves ready queue
 
             // Execute instructions until a process leaves ready queue or a new process comes in
             while(!thereIsAProcessLeaving){
-                int executionTime = executionTimes.at(wereLeftAt-1);
+                int executionTime = executionTimes.at((unsigned long)wereLeftAt-1);
                 // execute this statement
                 currentTime += executionTime;
                 wereLeftAt++;
@@ -158,6 +173,7 @@ int main() {
                     timeLine.pop_back();
 
                     readyQueue.push(newProcess);
+                    cout << currentTime + ":";
                     printQueue(readyQueue);
 
                     break;
@@ -167,10 +183,14 @@ int main() {
 
     }
 
-    for(auto & process : timeLine){
-        cout << process.toString() << endl;
+    cout << endl;
+    for(auto &x : turnaroundTimes){
+        cout << "Turnaround time for " + x.first + " = " + to_string(x.second) + " ms" << endl;
+        cout << "Waiting time for " + x.first + " = " + to_string(waitingTimes[x.first]) << endl;
     }
-
+    /*for(auto & process : timeLine){
+        cout << process.toString() << endl;
+    }*/
     return 0;
 
 }
