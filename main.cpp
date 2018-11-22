@@ -3,9 +3,10 @@
 #include <queue>
 #include <algorithm>
 #include <map>
- // TODO crashes when given processes with same arrival times and priorities, need further debug
+
 using namespace std;
 ofstream outputFile("output.txt");
+map<string,int> comingOrder; // process name and order
 
 struct process{
     int priority;
@@ -22,16 +23,15 @@ struct process{
         wereLeftAt = 1;
     }
 
-    string toString(){
-        return "Process: " + name + " file: " + codeFile
-               + " priority:" + to_string(priority) + " arrival: " + to_string(this->arrivalTime);
-    }
     bool operator <(const process & rhs) const{
-        return this-> priority > rhs.priority;
+        if(this->priority == rhs.priority){
+            return comingOrder[this->name] > comingOrder[rhs.name];
+        }
+        return this->priority > rhs.priority;
     }
 };
 struct program{
-    int index; // code(index).txt
+    int index;
     int numberOfInstructions;
     vector<int> instructionExecutionTimes;
 };
@@ -57,18 +57,17 @@ void printQueue(priority_queue<process> queue){
 
 int main() {
 
-    int currentTime = 0;
-    vector<int> arrivalTimes;
-    priority_queue<process> readyQueue;
-    vector<process> timeLine;
-    vector<program> programs;
-    map<string,int> turnaroundTimes;
-    map<string,int> waitingTimes;
+    int currentTime = 0; // current time
+    vector<int> arrivalTimes; // arrival times of process just like in timeLine, for simplicity
+    priority_queue<process> readyQueue; // ready queue of the os
+    vector<process> timeLine; // processes as they are coming first as a timeline
+    vector<program> programs; // programs => code files
+    map<string,int> turnaroundTimes; // process name and turnaround time
+    map<string,int> waitingTimes; // process name and waiting time
 
-
-    // DEFINITION FILE PARSING ----------
+    // DEFINITION FILE PARSING -------------------------------------------
     ifstream def;
-    def.open("./Provided Files/definition.txt");
+    def.open("definition.txt");
     if (def.is_open()){
         while(!def.eof()){ // while end of file is not reached
             process newProcess;
@@ -83,11 +82,12 @@ int main() {
     }else{
         cout << "Unable to open definition.txt file." << endl;
     }
-    // CODE FILES PARSING ----------
+    // -------------------------------------------
+    // CODE FILES PARSING -------------------------------------------
     for(int i=1;i<5;i++) { // code 1 to code 4
         ifstream codeFile;
         program newProgram = {};
-        codeFile.open("./Provided Files/code" + to_string(i) + ".txt");
+        codeFile.open("code" + to_string(i) + ".txt");
         if (codeFile.is_open()) {
             int lineCounter = 0; // Used to count number of lines in the file including exit
             while(!codeFile.eof()){ // while end of file is not reached
@@ -106,13 +106,20 @@ int main() {
             cout << "Unable to open code" + to_string(i) + ".txt file." << endl;
         }
     }
-    // SCHEDULING
+    // -------------------------------------------
+    // SCHEDULING -------------------------------------------
     /* In below statement sort timeline according to arrival time because we don't know
     * definition file is sorted according to arrival times of processes.*/
     sort(timeLine.begin(),timeLine.end(),[](const process & a, const process & b){
         return a.arrivalTime > b.arrivalTime;
     });
 
+    int counter = 1; // order number
+    // populate comingOrder vector to use it for FIFO of same priority processes
+    for(auto it = timeLine.end()-1;it != timeLine.begin()-1;it--){
+        comingOrder[it->name] = counter;
+        counter++;
+    }
 
     // for convinience seperate vector just including arrival times of processes
     // these are the critical times that scheduler get a interrupt.
@@ -175,14 +182,18 @@ int main() {
                 }
                 // If a new process comes in, add it to ready queue. And stop execution of current one.
                 if(!arrivalTimes.empty() && currentTime >= arrivalTimes.back()){
-                    process arrivalProcess = timeLine.back();
-                    waitingTimes[arrivalProcess.name] += currentTime - arrivalTimes.back(); // If a process has come and waited an instruction to finish
 
-                    arrivalTimes.pop_back(); // remove from arrival times
-                    process newProcess = timeLine.back();
-                    timeLine.pop_back(); // remove form timeline
+                    int nextTime = timeLine.back().arrivalTime;
 
-                    readyQueue.push(newProcess);
+                    while(timeLine.back().arrivalTime == nextTime){ // after reaching a first arriving process,
+                        // remove every process arrived at that time. Add them to ready queue.
+                        process nextProcess = timeLine.back();
+                        timeLine.pop_back();
+                        arrivalTimes.pop_back();
+                        waitingTimes[nextProcess.name] += currentTime - arrivalTimes.back(); // If a process has come and waited an instruction to finish
+                        readyQueue.push(nextProcess);
+                    }
+
                     outputFile << to_string(currentTime) + ":";
                     printQueue(readyQueue);
                     break;
@@ -190,7 +201,8 @@ int main() {
             }
         }
     }
-
+    // -------------------------------------------
+    // Turnaround and Waiting Time Outputting -------------------------------------------
     outputFile << endl;
     string last = (--turnaroundTimes.end())->first; // last element in the map should cause not to print endl
     for(auto &x : turnaroundTimes){
@@ -202,6 +214,8 @@ int main() {
         }
     }
     outputFile.close();
-    return 0;
+    // -------------------------------------------
+
+    return 0; // end of the program
 
 }
