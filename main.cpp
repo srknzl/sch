@@ -130,9 +130,10 @@ int main() {
 
     // terminating condition: when ready queue is empty and every process has arrived.
     int lastComingProcessArrival = timeLine.front().arrivalTime;
+    int firstComingProcessArrival = timeLine.back().arrivalTime;
 
     while(currentTime < lastComingProcessArrival || !readyQueue.empty()){
-        if(readyQueue.empty()){ // no process has come yet
+        if(currentTime < firstComingProcessArrival){ // no process has come yet
             outputFile << to_string(currentTime) + ":";
             printQueue(readyQueue);
             int nextTime = timeLine.back().arrivalTime;
@@ -146,7 +147,22 @@ int main() {
             currentTime = nextTime; // advance time until first arriving process
             outputFile << to_string(currentTime) + ":";
             printQueue(readyQueue);
-        }else{
+        }
+        else if (readyQueue.empty()){ // If a long period enters between processes and ready queue becomes empty
+            int nextTime = timeLine.back().arrivalTime;
+            while(timeLine.back().arrivalTime == nextTime){
+                process nextProcess = timeLine.back();
+                timeLine.pop_back();
+                arrivalTimes.pop_back();
+                readyQueue.push(nextProcess);
+            }
+
+            currentTime = nextTime;
+
+            outputFile << to_string(currentTime) + ":";
+            printQueue(readyQueue);
+        }
+        else{
             bool thereIsAProcessLeaving = false; // will be true if a process leaves ready queue
 
             // Execute instructions until the process finishes or a new process comes in
@@ -190,7 +206,7 @@ int main() {
                         process nextProcess = timeLine.back();
                         timeLine.pop_back();
                         arrivalTimes.pop_back();
-                        waitingTimes[nextProcess.name] += currentTime - arrivalTimes.back(); // If a process has come and waited an instruction to finish
+                        waitingTimes[nextProcess.name] += currentTime - nextTime; // If a process has come and waited an instruction to finish
                         readyQueue.push(nextProcess);
                     }
 
