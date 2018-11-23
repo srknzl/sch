@@ -64,6 +64,7 @@ int main() {
     vector<program> programs; // programs => code files
     map<string,int> turnaroundTimes; // process name and turnaround time
     map<string,int> waitingTimes; // process name and waiting time
+    vector<string> processNames;
 
     // DEFINITION FILE PARSING -------------------------------------------
     ifstream def;
@@ -77,7 +78,11 @@ int main() {
             def >> newProcess.codeFile;
             def >> newProcess.arrivalTime;
 
-            timeLine.push_back(newProcess);
+            if(newProcess.name !=""){ // in case of an error
+                processNames.push_back(newProcess.name);
+                timeLine.push_back(newProcess);
+            }
+
         }
     }else{
         cout << "Unable to open definition.txt file." << endl;
@@ -196,9 +201,10 @@ int main() {
                     outputFile << to_string(currentTime) + ":";
                     printQueue(readyQueue); // when a process terminates print the ready queue
                 }
+                bool hasCome = false;
                 // If a new process comes in, add it to ready queue. And stop execution of current one.
-                if(!arrivalTimes.empty() && currentTime >= arrivalTimes.back()){
-
+                while(!arrivalTimes.empty() && currentTime >= arrivalTimes.back()){
+                    hasCome = true;
                     int nextTime = timeLine.back().arrivalTime;
 
                     while(timeLine.back().arrivalTime == nextTime){ // after reaching a first arriving process,
@@ -210,9 +216,10 @@ int main() {
                         readyQueue.push(nextProcess);
                     }
 
+                }
+                if(hasCome){
                     outputFile << to_string(currentTime) + ":";
                     printQueue(readyQueue);
-                    break;
                 }
             }
         }
@@ -220,13 +227,13 @@ int main() {
     // -------------------------------------------
     // Turnaround and Waiting Time Outputting -------------------------------------------
     outputFile << endl;
-    string last = (--turnaroundTimes.end())->first; // last element in the map should cause not to print endl
-    for(auto &x : turnaroundTimes){
-        outputFile << "Turnaround time for " + x.first + " = " + to_string(x.second) + " ms" << endl;
-        if(x.first != last){
-            outputFile << "Waiting time for " + x.first + " = " + to_string(waitingTimes[x.first]) << endl;
+    string last = *(--processNames.end()); // last element in the map should cause not to print endl
+    for(auto &x : processNames){
+        outputFile << "Turnaround time for " + x + " = " + to_string(turnaroundTimes[x]) + " ms" << endl;
+        if(x != last){
+            outputFile << "Waiting time for " + x + " = " + to_string(waitingTimes[x]) << endl;
         }else{
-            outputFile << "Waiting time for " + x.first + " = " + to_string(waitingTimes[x.first]);
+            outputFile << "Waiting time for " + x + " = " + to_string(waitingTimes[x]);
         }
     }
     outputFile.close();
