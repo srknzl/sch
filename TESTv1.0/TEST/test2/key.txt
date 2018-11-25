@@ -1,0 +1,60 @@
+0:HEAD--TAIL
+100:HEAD-P1[1]-TAIL
+110:HEAD-P1[2]-P2[1]-TAIL
+170:HEAD-P3[1]-P1[3]-P2[1]-TAIL
+320:HEAD-P3[4]-P1[3]-P5[1]-P2[1]-P4[1]-TAIL
+420:HEAD-P3[5]-P1[3]-P6[1]-P5[1]-P2[1]-P4[1]-TAIL
+780:HEAD-P1[3]-P6[1]-P5[1]-P2[1]-P4[1]-TAIL
+1320:HEAD-P6[1]-P5[1]-P2[1]-P4[1]-TAIL
+1330:HEAD-P6[2]-P7[1]-P5[1]-P2[1]-P4[1]-TAIL
+1390:HEAD-P8[1]-P6[3]-P7[1]-P5[1]-P2[1]-P4[1]-TAIL
+1530:HEAD-P9[1]-P8[4]-P6[3]-P7[1]-P5[1]-P2[1]-P4[1]-P10[1]-TAIL
+2140:HEAD-P8[4]-P6[3]-P7[1]-P5[1]-P2[1]-P4[1]-P10[1]-TAIL
+3350:HEAD-P6[3]-P7[1]-P5[1]-P2[1]-P4[1]-P10[1]-TAIL
+3890:HEAD-P7[1]-P5[1]-P2[1]-P4[1]-P10[1]-TAIL
+4500:HEAD-P5[1]-P2[1]-P4[1]-P10[1]-TAIL
+5850:HEAD-P2[1]-P4[1]-P10[1]-TAIL
+6460:HEAD-P4[1]-P10[1]-TAIL
+7070:HEAD-P10[1]-TAIL
+7680:HEAD--TAIL
+7780:HEAD-P11[1]-TAIL
+7930:HEAD-P11[4]-P12[1]-TAIL
+8200:HEAD-P11[8]-P12[1]-P13[1]-TAIL
+8390:HEAD-P12[1]-P13[1]-TAIL
+8480:HEAD-P14[1]-P12[2]-P13[1]-TAIL
+9090:HEAD-P12[2]-P13[1]-TAIL
+9550:HEAD-P15[1]-P12[10]-P13[1]-TAIL
+10900:HEAD-P12[10]-P13[1]-TAIL
+11700:HEAD-P13[1]-TAIL
+12310:HEAD--TAIL
+
+Turnaround time for P1 = 1220 ms
+Waiting time for P1 = 610
+Turnaround time for P2 = 6350 ms
+Waiting time for P2 = 5740
+Turnaround time for P3 = 620 ms
+Waiting time for P3 = 10
+Turnaround time for P4 = 6810 ms
+Waiting time for P4 = 6200
+Turnaround time for P5 = 5540 ms
+Waiting time for P5 = 4190
+Turnaround time for P6 = 3530 ms
+Waiting time for P6 = 2920
+Turnaround time for P7 = 3170 ms
+Waiting time for P7 = 2560
+Turnaround time for P8 = 2010 ms
+Waiting time for P8 = 660
+Turnaround time for P9 = 680 ms
+Waiting time for P9 = 70
+Turnaround time for P10 = 6210 ms
+Waiting time for P10 = 5600
+Turnaround time for P11 = 610 ms
+Waiting time for P11 = 0
+Turnaround time for P12 = 3780 ms
+Waiting time for P12 = 2430
+Turnaround time for P13 = 4180 ms
+Waiting time for P13 = 3570
+Turnaround time for P14 = 650 ms
+Waiting time for P14 = 40
+Turnaround time for P15 = 1350 ms
+Waiting time for P15 = 0

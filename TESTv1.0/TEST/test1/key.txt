@@ -1,0 +1,40 @@
+0:HEAD--TAIL
+40:HEAD-P1[1]-TAIL
+110:HEAD-P1[3]-P2[1]-TAIL
+190:HEAD-P1[4]-P2[1]-P4[1]-P3[1]-TAIL
+290:HEAD-P1[5]-P2[1]-P4[1]-P5[1]-P3[1]-TAIL
+360:HEAD-P1[7]-P2[1]-P4[1]-P5[1]-P3[1]-P6[1]-TAIL
+460:HEAD-P7[1]-P1[8]-P8[1]-P2[1]-P4[1]-P5[1]-P3[1]-P6[1]-TAIL
+570:HEAD-P7[3]-P10[1]-P1[8]-P8[1]-P2[1]-P4[1]-P5[1]-P3[1]-P6[1]-P9[1]-TAIL
+1970:HEAD-P10[1]-P1[8]-P8[1]-P2[1]-P4[1]-P5[1]-P3[1]-P6[1]-P9[1]-TAIL
+2580:HEAD-P1[8]-P8[1]-P2[1]-P4[1]-P5[1]-P3[1]-P6[1]-P9[1]-TAIL
+2770:HEAD-P8[1]-P2[1]-P4[1]-P5[1]-P3[1]-P6[1]-P9[1]-TAIL
+4050:HEAD-P2[1]-P4[1]-P5[1]-P3[1]-P6[1]-P9[1]-TAIL
+5330:HEAD-P4[1]-P5[1]-P3[1]-P6[1]-P9[1]-TAIL
+5940:HEAD-P5[1]-P3[1]-P6[1]-P9[1]-TAIL
+7290:HEAD-P3[1]-P6[1]-P9[1]-TAIL
+9830:HEAD-P6[1]-P9[1]-TAIL
+10440:HEAD-P9[1]-TAIL
+12980:HEAD--TAIL
+
+Turnaround time for P1 = 2730 ms
+Waiting time for P1 = 2120
+Turnaround time for P2 = 5260 ms
+Waiting time for P2 = 3980
+Turnaround time for P3 = 9680 ms
+Waiting time for P3 = 7140
+Turnaround time for P4 = 5760 ms
+Waiting time for P4 = 5150
+Turnaround time for P5 = 7070 ms
+Waiting time for P5 = 5720
+Turnaround time for P6 = 10130 ms
+Waiting time for P6 = 9520
+Turnaround time for P7 = 1570 ms
+Waiting time for P7 = 60
+Turnaround time for P8 = 3610 ms
+Waiting time for P8 = 2330
+Turnaround time for P9 = 12420 ms
+Waiting time for P9 = 9880
+Turnaround time for P10 = 2010 ms
+Waiting time for P10 = 1400
+

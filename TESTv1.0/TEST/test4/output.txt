@@ -1,0 +1,98 @@
+0:HEAD--TAIL
+370:HEAD-P1[1]-TAIL
+430:HEAD-P2[1]-P1[3]-TAIL
+510:HEAD-P2[2]-P1[3]-P4[1]-P3[1]-TAIL
+550:HEAD-P2[3]-P1[3]-P4[1]-P3[1]-P5[1]-TAIL
+610:HEAD-P2[4]-P1[3]-P4[1]-P6[1]-P3[1]-P5[1]-TAIL
+690:HEAD-P2[5]-P1[3]-P4[1]-P6[1]-P7[1]-P3[1]-P5[1]-TAIL
+730:HEAD-P2[6]-P1[3]-P4[1]-P6[1]-P7[1]-P3[1]-P5[1]-P8[1]-TAIL
+1140:HEAD-P2[13]-P10[1]-P1[3]-P4[1]-P6[1]-P7[1]-P3[1]-P5[1]-P8[1]-P9[1]-TAIL
+1210:HEAD-P2[14]-P10[1]-P1[3]-P4[1]-P6[1]-P7[1]-P3[1]-P5[1]-P8[1]-P9[1]-P11[1]-TAIL
+1250:HEAD-P2[16]-P10[1]-P1[3]-P4[1]-P6[1]-P7[1]-P12[1]-P3[1]-P5[1]-P8[1]-P9[1]-P11[1]-TAIL
+1330:HEAD-P2[17]-P10[1]-P1[3]-P4[1]-P6[1]-P7[1]-P12[1]-P3[1]-P5[1]-P8[1]-P13[1]-P9[1]-P11[1]-TAIL
+1350:HEAD-P2[18]-P10[1]-P1[3]-P4[1]-P6[1]-P7[1]-P12[1]-P3[1]-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+1440:HEAD-P2[19]-P10[1]-P15[1]-P1[3]-P4[1]-P6[1]-P7[1]-P12[1]-P3[1]-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+1520:HEAD-P2[20]-P10[1]-P15[1]-P1[3]-P16[1]-P4[1]-P6[1]-P7[1]-P12[1]-P3[1]-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+1560:HEAD-P2[21]-P10[1]-P15[1]-P1[3]-P17[1]-P16[1]-P4[1]-P6[1]-P7[1]-P12[1]-P3[1]-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+1640:HEAD-P2[23]-P10[1]-P15[1]-P1[3]-P17[1]-P16[1]-P18[1]-P4[1]-P6[1]-P7[1]-P12[1]-P3[1]-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+1690:HEAD-P2[24]-P10[1]-P15[1]-P19[1]-P1[3]-P17[1]-P16[1]-P18[1]-P4[1]-P6[1]-P7[1]-P12[1]-P20[1]-P3[1]-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+1950:HEAD-P2[31]-P10[1]-P15[1]-P19[1]-P1[3]-P17[1]-P16[1]-P18[1]-P21[1]-P4[1]-P6[1]-P7[1]-P12[1]-P20[1]-P3[1]-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+1990:HEAD-P2[33]-P10[1]-P15[1]-P19[1]-P1[3]-P17[1]-P16[1]-P18[1]-P21[1]-P22[1]-P4[1]-P6[1]-P7[1]-P12[1]-P20[1]-P3[1]-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+2070:HEAD-P2[34]-P10[1]-P15[1]-P19[1]-P23[1]-P1[3]-P17[1]-P16[1]-P18[1]-P21[1]-P22[1]-P4[1]-P6[1]-P7[1]-P12[1]-P20[1]-P3[1]-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+2150:HEAD-P2[36]-P10[1]-P15[1]-P19[1]-P23[1]-P1[3]-P24[1]-P17[1]-P16[1]-P18[1]-P21[1]-P22[1]-P4[1]-P6[1]-P7[1]-P12[1]-P20[1]-P25[1]-P3[1]-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+2860:HEAD-P10[1]-P15[1]-P19[1]-P23[1]-P1[3]-P24[1]-P17[1]-P16[1]-P18[1]-P21[1]-P22[1]-P4[1]-P6[1]-P7[1]-P12[1]-P20[1]-P25[1]-P3[1]-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+3470:HEAD-P15[1]-P19[1]-P23[1]-P1[3]-P24[1]-P17[1]-P16[1]-P18[1]-P21[1]-P22[1]-P4[1]-P6[1]-P7[1]-P12[1]-P20[1]-P25[1]-P3[1]-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+4820:HEAD-P19[1]-P23[1]-P1[3]-P24[1]-P17[1]-P16[1]-P18[1]-P21[1]-P22[1]-P4[1]-P6[1]-P7[1]-P12[1]-P20[1]-P25[1]-P3[1]-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+5430:HEAD-P23[1]-P1[3]-P24[1]-P17[1]-P16[1]-P18[1]-P21[1]-P22[1]-P4[1]-P6[1]-P7[1]-P12[1]-P20[1]-P25[1]-P3[1]-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+7860:HEAD-P1[3]-P24[1]-P17[1]-P16[1]-P18[1]-P21[1]-P22[1]-P4[1]-P6[1]-P7[1]-P12[1]-P20[1]-P25[1]-P3[1]-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+9150:HEAD-P24[1]-P17[1]-P16[1]-P18[1]-P21[1]-P22[1]-P4[1]-P6[1]-P7[1]-P12[1]-P20[1]-P25[1]-P3[1]-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+10550:HEAD-P17[1]-P16[1]-P18[1]-P21[1]-P22[1]-P4[1]-P6[1]-P7[1]-P12[1]-P20[1]-P25[1]-P3[1]-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+14170:HEAD-P16[1]-P18[1]-P21[1]-P22[1]-P4[1]-P6[1]-P7[1]-P12[1]-P20[1]-P25[1]-P3[1]-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+16600:HEAD-P18[1]-P21[1]-P22[1]-P4[1]-P6[1]-P7[1]-P12[1]-P20[1]-P25[1]-P3[1]-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+17210:HEAD-P21[1]-P22[1]-P4[1]-P6[1]-P7[1]-P12[1]-P20[1]-P25[1]-P3[1]-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+18490:HEAD-P22[1]-P4[1]-P6[1]-P7[1]-P12[1]-P20[1]-P25[1]-P3[1]-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+22670:HEAD-P4[1]-P6[1]-P7[1]-P12[1]-P20[1]-P25[1]-P3[1]-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+26850:HEAD-P6[1]-P7[1]-P12[1]-P20[1]-P25[1]-P3[1]-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+27460:HEAD-P7[1]-P12[1]-P20[1]-P25[1]-P3[1]-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+30000:HEAD-P12[1]-P20[1]-P25[1]-P3[1]-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+33620:HEAD-P20[1]-P25[1]-P3[1]-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+34970:HEAD-P25[1]-P3[1]-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+39150:HEAD-P3[1]-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+43330:HEAD-P5[1]-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+44680:HEAD-P8[1]-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+48300:HEAD-P13[1]-P14[1]-P9[1]-P11[1]-TAIL
+49700:HEAD-P14[1]-P9[1]-P11[1]-TAIL
+53880:HEAD-P9[1]-P11[1]-TAIL
+58060:HEAD-P11[1]-TAIL
+59410:HEAD--TAIL
+
+Turnaround time for P1 = 8780 ms
+Waiting time for P1 = 7430
+Turnaround time for P2 = 2440 ms
+Waiting time for P2 = 10
+Turnaround time for P3 = 42860 ms
+Waiting time for P3 = 38680
+Turnaround time for P4 = 26370 ms
+Waiting time for P4 = 22190
+Turnaround time for P5 = 44150 ms
+Waiting time for P5 = 42800
+Turnaround time for P6 = 26890 ms
+Waiting time for P6 = 26280
+Turnaround time for P7 = 29380 ms
+Waiting time for P7 = 26840
+Turnaround time for P8 = 47590 ms
+Waiting time for P8 = 43970
+Turnaround time for P9 = 56970 ms
+Waiting time for P9 = 52790
+Turnaround time for P10 = 2370 ms
+Waiting time for P10 = 1760
+Turnaround time for P11 = 58220 ms
+Waiting time for P11 = 56870
+Turnaround time for P12 = 32380 ms
+Waiting time for P12 = 28760
+Turnaround time for P13 = 48440 ms
+Waiting time for P13 = 47040
+Turnaround time for P14 = 52530 ms
+Waiting time for P14 = 48350
+Turnaround time for P15 = 3410 ms
+Waiting time for P15 = 2060
+Turnaround time for P16 = 15100 ms
+Waiting time for P16 = 12670
+Turnaround time for P17 = 12620 ms
+Waiting time for P17 = 9000
+Turnaround time for P18 = 15600 ms
+Waiting time for P18 = 14990
+Turnaround time for P19 = 3770 ms
+Waiting time for P19 = 3160
+Turnaround time for P20 = 33300 ms
+Waiting time for P20 = 31950
+Turnaround time for P21 = 16550 ms
+Waiting time for P21 = 15270
+Turnaround time for P22 = 20680 ms
+Waiting time for P22 = 16500
+Turnaround time for P23 = 5830 ms
+Waiting time for P23 = 3400
+Turnaround time for P24 = 8430 ms
+Waiting time for P24 = 7030
+Turnaround time for P25 = 37000 ms
+Waiting time for P25 = 32820

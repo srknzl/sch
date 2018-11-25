@@ -1,0 +1,78 @@
+0:HEAD--TAIL
+40:HEAD-P1[1]-TAIL
+110:HEAD-P2[1]-P1[3]-TAIL
+200:HEAD-P2[3]-P1[3]-P3[1]-TAIL
+240:HEAD-P2[5]-P4[1]-P1[3]-P3[1]-TAIL
+390:HEAD-P2[7]-P5[1]-P4[1]-P6[1]-P1[3]-P3[1]-TAIL
+460:HEAD-P7[1]-P2[8]-P5[1]-P4[1]-P6[1]-P1[3]-P3[1]-P8[1]-TAIL
+550:HEAD-P7[2]-P2[8]-P5[1]-P4[1]-P6[1]-P1[3]-P3[1]-P9[1]-P8[1]-TAIL
+650:HEAD-P7[5]-P10[1]-P2[8]-P5[1]-P4[1]-P6[1]-P1[3]-P3[1]-P9[1]-P8[1]-TAIL
+720:HEAD-P7[6]-P10[1]-P2[8]-P11[1]-P5[1]-P4[1]-P6[1]-P1[3]-P3[1]-P9[1]-P8[1]-TAIL
+810:HEAD-P7[7]-P10[1]-P2[8]-P11[1]-P5[1]-P12[1]-P4[1]-P6[1]-P1[3]-P3[1]-P9[1]-P8[1]-TAIL
+1230:HEAD-P7[13]-P13[1]-P10[1]-P2[8]-P11[1]-P5[1]-P12[1]-P4[1]-P6[1]-P1[3]-P3[1]-P9[1]-P8[1]-TAIL
+1320:HEAD-P7[14]-P13[1]-P10[1]-P2[8]-P11[1]-P14[1]-P5[1]-P12[1]-P4[1]-P6[1]-P1[3]-P3[1]-P9[1]-P8[1]-TAIL
+1400:HEAD-P7[15]-P13[1]-P15[1]-P10[1]-P2[8]-P11[1]-P14[1]-P5[1]-P12[1]-P4[1]-P6[1]-P1[3]-P3[1]-P9[1]-P16[1]-P8[1]-TAIL
+1790:HEAD-P7[21]-P13[1]-P15[1]-P17[1]-P10[1]-P2[8]-P11[1]-P14[1]-P5[1]-P12[1]-P4[1]-P6[1]-P1[3]-P3[1]-P9[1]-P16[1]-P8[1]-TAIL
+1830:HEAD-P7[22]-P13[1]-P15[1]-P17[1]-P10[1]-P2[8]-P11[1]-P14[1]-P5[1]-P12[1]-P4[1]-P6[1]-P19[1]-P1[3]-P18[1]-P3[1]-P9[1]-P16[1]-P8[1]-TAIL
+1920:HEAD-P7[23]-P13[1]-P15[1]-P17[1]-P10[1]-P2[8]-P11[1]-P14[1]-P5[1]-P12[1]-P20[1]-P4[1]-P6[1]-P19[1]-P1[3]-P18[1]-P3[1]-P9[1]-P16[1]-P8[1]-TAIL
+4080:HEAD-P13[1]-P15[1]-P17[1]-P10[1]-P2[8]-P11[1]-P14[1]-P5[1]-P12[1]-P20[1]-P4[1]-P6[1]-P19[1]-P1[3]-P18[1]-P3[1]-P9[1]-P16[1]-P8[1]-TAIL
+6510:HEAD-P15[1]-P17[1]-P10[1]-P2[8]-P11[1]-P14[1]-P5[1]-P12[1]-P20[1]-P4[1]-P6[1]-P19[1]-P1[3]-P18[1]-P3[1]-P9[1]-P16[1]-P8[1]-TAIL
+8020:HEAD-P17[1]-P10[1]-P2[8]-P11[1]-P14[1]-P5[1]-P12[1]-P20[1]-P4[1]-P6[1]-P19[1]-P1[3]-P18[1]-P3[1]-P9[1]-P16[1]-P8[1]-TAIL
+10450:HEAD-P10[1]-P2[8]-P11[1]-P14[1]-P5[1]-P12[1]-P20[1]-P4[1]-P6[1]-P19[1]-P1[3]-P18[1]-P3[1]-P9[1]-P16[1]-P8[1]-TAIL
+11850:HEAD-P2[8]-P11[1]-P14[1]-P5[1]-P12[1]-P20[1]-P4[1]-P6[1]-P19[1]-P1[3]-P18[1]-P3[1]-P9[1]-P16[1]-P8[1]-TAIL
+12780:HEAD-P11[1]-P14[1]-P5[1]-P12[1]-P20[1]-P4[1]-P6[1]-P19[1]-P1[3]-P18[1]-P3[1]-P9[1]-P16[1]-P8[1]-TAIL
+14130:HEAD-P14[1]-P5[1]-P12[1]-P20[1]-P4[1]-P6[1]-P19[1]-P1[3]-P18[1]-P3[1]-P9[1]-P16[1]-P8[1]-TAIL
+16560:HEAD-P5[1]-P12[1]-P20[1]-P4[1]-P6[1]-P19[1]-P1[3]-P18[1]-P3[1]-P9[1]-P16[1]-P8[1]-TAIL
+17840:HEAD-P12[1]-P20[1]-P4[1]-P6[1]-P19[1]-P1[3]-P18[1]-P3[1]-P9[1]-P16[1]-P8[1]-TAIL
+21460:HEAD-P20[1]-P4[1]-P6[1]-P19[1]-P1[3]-P18[1]-P3[1]-P9[1]-P16[1]-P8[1]-TAIL
+22810:HEAD-P4[1]-P6[1]-P19[1]-P1[3]-P18[1]-P3[1]-P9[1]-P16[1]-P8[1]-TAIL
+23420:HEAD-P6[1]-P19[1]-P1[3]-P18[1]-P3[1]-P9[1]-P16[1]-P8[1]-TAIL
+24770:HEAD-P19[1]-P1[3]-P18[1]-P3[1]-P9[1]-P16[1]-P8[1]-TAIL
+27310:HEAD-P1[3]-P18[1]-P3[1]-P9[1]-P16[1]-P8[1]-TAIL
+27850:HEAD-P18[1]-P3[1]-P9[1]-P16[1]-P8[1]-TAIL
+28460:HEAD-P3[1]-P9[1]-P16[1]-P8[1]-TAIL
+29070:HEAD-P9[1]-P16[1]-P8[1]-TAIL
+30350:HEAD-P16[1]-P8[1]-TAIL
+34530:HEAD-P8[1]-TAIL
+35930:HEAD--TAIL
+
+Turnaround time for P1 = 27810 ms
+Waiting time for P1 = 27200
+Turnaround time for P2 = 12690 ms
+Waiting time for P2 = 11410
+Turnaround time for P3 = 28920 ms
+Waiting time for P3 = 28310
+Turnaround time for P4 = 23190 ms
+Waiting time for P4 = 22580
+Turnaround time for P5 = 17540 ms
+Waiting time for P5 = 16260
+Turnaround time for P6 = 24400 ms
+Waiting time for P6 = 23050
+Turnaround time for P7 = 3670 ms
+Waiting time for P7 = 50
+Turnaround time for P8 = 35480 ms
+Waiting time for P8 = 34080
+Turnaround time for P9 = 29830 ms
+Waiting time for P9 = 28550
+Turnaround time for P10 = 11240 ms
+Waiting time for P10 = 9840
+Turnaround time for P11 = 13440 ms
+Waiting time for P11 = 12090
+Turnaround time for P12 = 20720 ms
+Waiting time for P12 = 17100
+Turnaround time for P13 = 5290 ms
+Waiting time for P13 = 2860
+Turnaround time for P14 = 15320 ms
+Waiting time for P14 = 12890
+Turnaround time for P15 = 6690 ms
+Waiting time for P15 = 5180
+Turnaround time for P16 = 33140 ms
+Waiting time for P16 = 28960
+Turnaround time for P17 = 8690 ms
+Waiting time for P17 = 6260
+Turnaround time for P18 = 26640 ms
+Waiting time for P18 = 26030
+Turnaround time for P19 = 25480 ms
+Waiting time for P19 = 22940
+Turnaround time for P20 = 20930 ms
+Waiting time for P20 = 19580
