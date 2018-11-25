@@ -3,6 +3,7 @@
 #include <queue>
 #include <algorithm>
 #include <map>
+#include <set>
 
 using namespace std;
 ofstream outputFile("output.txt");
@@ -61,10 +62,11 @@ int main() {
     vector<int> arrivalTimes; // arrival times of process just like in timeLine, for simplicity
     priority_queue<process> readyQueue; // ready queue of the os
     vector<process> timeLine; // processes as they are coming first as a timeline
-    vector<program> programs; // programs => code files
+    map<string,program> programs; // programs => code files
     map<string,int> turnaroundTimes; // process name and turnaround time
     map<string,int> waitingTimes; // process name and waiting time
     vector<string> processNames;
+    set<string> codeFiles;
 
     // DEFINITION FILE PARSING -------------------------------------------
     ifstream def;
@@ -81,6 +83,7 @@ int main() {
             if(newProcess.name !=""){ // in case of an error
                 processNames.push_back(newProcess.name);
                 timeLine.push_back(newProcess);
+                codeFiles.insert(newProcess.codeFile);
             }
 
         }
@@ -89,10 +92,10 @@ int main() {
     }
     // -------------------------------------------
     // CODE FILES PARSING -------------------------------------------
-    for(int i=1;i<5;i++) { // code 1 to code 4
+    for( auto &x :codeFiles) { // code 1 to code 4
         ifstream codeFile;
         program newProgram = {};
-        codeFile.open("code" + to_string(i) + ".txt");
+        codeFile.open(x + ".txt");
         if (codeFile.is_open()) {
             int lineCounter = 0; // Used to count number of lines in the file including exit
             while(!codeFile.eof()){ // while end of file is not reached
@@ -104,11 +107,11 @@ int main() {
                 newProgram.instructionExecutionTimes.push_back(executionTime);
             }
             newProgram.numberOfInstructions = lineCounter;
-            newProgram.index = i;
-            programs.push_back(newProgram);
+            newProgram.index = stoi(x.substr(4));
+            programs[x] = newProgram;
         }
         else{
-            cout << "Unable to open code" + to_string(i) + ".txt file." << endl;
+            cout << "Unable to open code" + x + ".txt file." << endl;
         }
     }
     // -------------------------------------------
@@ -169,15 +172,15 @@ int main() {
         }
         else{
             bool thereIsAProcessLeaving = false; // will be true if a process leaves ready queue
+            bool processHasCome = false;
 
             // Execute instructions until the process finishes or a new process comes in
-            while(!thereIsAProcessLeaving){
+            while(!thereIsAProcessLeaving && !processHasCome){
                 process enteringCPU = readyQueue.top();
                 readyQueue.pop();
-                string s(1, enteringCPU.codeFile.at(enteringCPU.codeFile.length()-1)); // getting last char converting to string
-                int indexOfCode = stoi(s);
-                int numOfInstructions = programs.at((unsigned long)indexOfCode-1).numberOfInstructions;
-                vector<int> executionTimes = programs.at((unsigned long)indexOfCode-1).instructionExecutionTimes;
+                int indexOfCode = stoi(enteringCPU.codeFile.substr(4));
+                int numOfInstructions = programs["code"+to_string(indexOfCode)].numberOfInstructions;
+                vector<int> executionTimes = programs["code"+to_string(indexOfCode)].instructionExecutionTimes;
 
                 int executionTime = executionTimes.at((unsigned long)enteringCPU.wereLeftAt-1);
                 // execute this statement
@@ -192,21 +195,31 @@ int main() {
                     if(next.name != enteringCPU.name) waitingTimes[next.name] += executionTime;
                     copyQueue.pop();
                 }
+                // Check if a process has come for printing just below
+                if(!arrivalTimes.empty() && currentTime >= arrivalTimes.back()){
+                    processHasCome = true;
+                }
 
                 // turnAround time calculation if the process finishes
                 if(enteringCPU.wereLeftAt == 1 + numOfInstructions){
                     thereIsAProcessLeaving = true;
                     turnaroundTimes[enteringCPU.name] = currentTime - enteringCPU.arrivalTime;  // calculate turnaround time
                     readyQueue.pop();
-                    outputFile << to_string(currentTime) + ":";
-                    printQueue(readyQueue); // when a process terminates print the ready queue
+
+                    // to avoid same time prints
+                    if(!processHasCome){
+                        outputFile << to_string(currentTime) + ":";
+                        printQueue(readyQueue); // when a process terminates print the ready queue
+                    }
                 }
-                bool hasCome = false;
+
+                processHasCome = false;
                 // If a new process comes in, add it to ready queue. And stop execution of current one.
                 while(!arrivalTimes.empty() && currentTime >= arrivalTimes.back()){
-                    hasCome = true;
-                    int nextTime = timeLine.back().arrivalTime;
+                    processHasCome = true;
 
+
+                    int nextTime = timeLine.back().arrivalTime;
                     while(timeLine.back().arrivalTime == nextTime){ // after reaching a first arriving process,
                         // remove every process arrived at that time. Add them to ready queue.
                         process nextProcess = timeLine.back();
@@ -217,7 +230,7 @@ int main() {
                     }
 
                 }
-                if(hasCome){
+                if(processHasCome){
                     outputFile << to_string(currentTime) + ":";
                     printQueue(readyQueue);
                 }
